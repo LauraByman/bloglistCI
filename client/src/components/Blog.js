@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 //delete blogi ei vielä toteutettu
 // eslint-disable-next-line no-unused-vars
 const Blog = ({ blog, updateBlog, removeBlog }) => {
-  
+
   const [blogDetails, setShowBlogDetails] = useState(false)
 
   const hideWhenDetailsShown = { display: blogDetails ? 'none' : '' }
