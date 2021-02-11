@@ -6,7 +6,6 @@
   "scripts": {
     "start": " webpack --mode=developement | node server/index.js",
     "dev": "concurrently  \"webpack-dev-server --open --mode=development   \" \"node ./server/index.js\"",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "build": "webpack --mode=production",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",

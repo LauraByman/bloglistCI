@@ -38,14 +38,14 @@ app.get('*', function(req, res) {
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testRouter')
-  app.use(BACKEND_URL + '/api/testing', testingRouter)
+  app.use(process.env.BACKEND_URL + '/api/testing', testingRouter)
 }
 
-app.use(BACKEND_URL + '/api/login', loginRouter)
+app.use(process.env.BACKEND_URL + '/api/login', loginRouter)
 
-app.use(BACKEND_URL + '/api/blogs', blogsRouter)
-app.use(BACKEND_URL +'/api/users', usersRouter)
-app.use(BACKEND_URL+ '/api/health', healthRouter)
+app.use(process.env.BACKEND_URL + '/api/blogs', blogsRouter)
+app.use(process.env.BACKEND_URL +'/api/users', usersRouter)
+app.use(process.env.BACKEND_URL+ '/api/health', healthRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
