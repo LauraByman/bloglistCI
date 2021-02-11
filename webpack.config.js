@@ -16,8 +16,13 @@
 
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const webpack = require('webpack')
 
-module.exports = {
+const backend_url = 'https://bloglistci.herokuapp.com/'
+// : 'http://localhost:3001/'
+
+const config = (env, argv) => {
+  return {
   entry: ['./client/src/index.js'],
   output: {
     path: path.resolve(__dirname, './public'),
@@ -66,6 +71,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html'
+    }),
+    new webpack.DefinePlugin({
+      BACKEND_URL: JSON.stringify(backend_url)
     })
   ],
   devServer: {
@@ -101,4 +109,7 @@ module.exports = {
 		  }
     ]
 	  }
+  }
 }
+
+module.exports = config
