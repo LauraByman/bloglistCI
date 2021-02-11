@@ -30,6 +30,8 @@ app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+app.use(express.static(__dirname + '/public/'));
+
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testRouter')
   app.use('/api/testing', testingRouter)
