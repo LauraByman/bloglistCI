@@ -7,7 +7,7 @@
     "start": " node ./server/index.js ",
     "start1": "concurrently  \"webpack-dev-server --open --mode development \" \"node ./server/index.js\"",
     "run dev": "webpack --mode=production --entry ./client/src/index.js --output ./static/bundle.js && node ./server/index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "build": "concurrently  \"webpack--mode development \" \"node ./server/index.js\"",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
