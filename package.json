@@ -4,14 +4,16 @@
   "description": "",
   "main": "./client/src/index.js",
   "scripts": {
-    "start2": "webpack-dev-server --open --mode development && node ./server/index.js ",
-    "start": "concurrently  \"webpack-dev-server --open --mode development \" \"node ./server/index.js\"",
-    "start1": "webpack --mode=production --entry ./client/src/index.js --output ./static/bundle.js && node ./server/index.js",
-    "build": "webpack --mode=production",
+    "start": " node ./server/index.js ",
+    "start1": "concurrently  \"webpack-dev-server --open --mode development \" \"node ./server/index.js\"",
+    "run dev": "webpack --mode=production --entry ./client/src/index.js --output ./static/bundle.js && node ./server/index.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
+    "build": "concurrently  \"webpack--mode development \" \"node ./server/index.js\"",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "cypress:open": "cypress open",
     "test:e2e": "cypress run"
+    
   },
   "proxy": "http://localhost:3001",
   "engines": {
