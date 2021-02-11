@@ -1,0 +1,23 @@
+POST http://localhost:3001/api/users HTTP/1.1
+content-type: application/json
+
+{
+"username":"Laura3",
+"name":"Laura",
+"password":"salasana"
+}
+
+###
+
+POST http://localhost:3001/api/blogs HTTP/1.1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkxhdXJhIiwiaWQiOiI1ZmIyY2VmMjZjMmQ2MTM5ZWMzNTYwNTMiLCJpYXQiOjE2MDU1NTM5Mzl9.cWJbwBQZ1J49hsCckT-1godWV7rFDvnTtoQT4FJGVLA
+
+{
+"title":"Laura3",
+"uauthor":"Laura",
+"url":"wwwwwww"
+}
+
+
+

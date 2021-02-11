@@ -1,0 +1,43 @@
+name: Test and deployment pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]     
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: npm install backend
+        run: npm install 
+        working-directory: ./server
+      - name: npm install front
+        run: npm install 
+        working-directory: ./client
+      - name: lint backend
+        run: npm run lint
+        working-directory: ./server
+      - name: lint front
+        run: npm run lint
+        working-directory: ./client 
+      - name: run build
+        run: npm start
+        working-directory: ./server
+      - name: run test
+        run: npm run test
+        working-directory: ./server
+      - name: e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./client
+          command: npm run test:e2e
+          wait-on: http://localhost:3001
+        
