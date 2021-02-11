@@ -13,7 +13,6 @@
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "cypress:open": "cypress open",
     "test:e2e": "cypress run"
-    
   },
   "proxy": "http://localhost:3001",
   "engines": {
