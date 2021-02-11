@@ -1,6 +1,4 @@
 .env
 node_modules
-public
 bundle.js
-index.html
-/public
+
