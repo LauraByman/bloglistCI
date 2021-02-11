@@ -8,7 +8,7 @@
     "start1": "concurrently  \"webpack-dev-server --open --mode development \" \"node ./server/index.js\"",
     "run dev": "webpack --mode=production --entry ./client/src/index.js --output ./static/bundle.js && node ./server/index.js",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
-    "build": "webpack--mode production",
+    "build": "webpack --mode=production",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "cypress:open": "cypress open",
