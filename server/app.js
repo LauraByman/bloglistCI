@@ -30,18 +30,18 @@ app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 
-app.use(express.static(__dirname + '/public/'));
+// app.use(express.static(__dirname + '/public/'));
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testRouter')
-  app.use('/api/testing', testingRouter)
+  app.use(BACKEND_URL + '/api/testing', testingRouter)
 }
 
-app.use('/api/login', loginRouter)
+app.use(BACKEND_URL + '/api/login', loginRouter)
 
-app.use('/api/blogs', blogsRouter)
-app.use('/api/users', usersRouter)
-app.use('/api/health', healthRouter)
+app.use(BACKEND_URL + '/api/blogs', blogsRouter)
+app.use(BACKEND_URL + '/api/users', usersRouter)
+app.use(BACKEND_URL +'/api/health', healthRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

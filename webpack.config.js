@@ -14,10 +14,17 @@
 // 	}
 // };
 
+const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-module.exports = {
+const config = (env, argv) => {
+
+  const backend_url = argv.mode === 'production'
+  ? 'https://bloglistci.herokuapp.com'
+  : 'http://localhost:3001'
+
+  return {
   entry: ['@babel/polyfill', './client/src/index.js'],
   output: {
     path: path.resolve(__dirname, './public'),
@@ -66,6 +73,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html'
+    }),
+    new webpack.DefinePlugin({
+        BACKEND_URL: JSON.stringify(backend_url) 
     })
   ],
   devServer: {
@@ -99,5 +109,10 @@ module.exports = {
         }]
 		  }
     ]
-	  }
+    }
+  }
+
 }
+
+module.exports = config
+
