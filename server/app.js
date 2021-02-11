@@ -33,8 +33,8 @@ app.use(middleware.requestLogger)
 app.use(express.static('./public/'))
 
 app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, 'public/index.html'));
-});
+  res.sendFile(path.resolve(__dirname, 'public/index.html'))
+})
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testRouter')
