@@ -4,7 +4,7 @@
   "description": "",
   "main": "./client/src/index.js",
   "scripts": {
-    "start": " node ./server/index.js ",
+    "start": " webpack -d | node server/index.js",
     "start1": "concurrently  \"webpack-dev-server --open --mode development \" \"node ./server/index.js\"",
     "run dev": "webpack --mode=production --entry ./client/src/index.js --output ./static/bundle.js && node ./server/index.js",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
