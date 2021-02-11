@@ -33,7 +33,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "bloglistci" #Must be unique in Heroku
           heroku_email: "laura.a.byman@gmail.com"
-          healthcheck: "https://bloglistci.herokuapp.com/health"
+          healthcheck: "https://bloglistci.herokuapp.com/api/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
       - name: Bump version and push tag
