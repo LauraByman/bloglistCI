@@ -9,7 +9,9 @@
     "start1": "webpack --mode=production --entry ./client/src/index.js --output ./static/bundle.js && node ./server/index.js",
     "build": "webpack --mode=production",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "cypress:open": "cypress open",
+    "test:e2e": "cypress run"
   },
   "proxy": "http://localhost:3001",
   "engines": {
@@ -36,6 +38,7 @@
     "cors": "^2.8.5",
     "cross-env": "^7.0.0",
     "css-loader": "^3.4.2",
+    "cypress": "^6.4.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
