@@ -21,9 +21,11 @@ jobs:
       - name: lint 
         run: npm run lint
       - name: run build
-        run: npm start
+        run: run build
       - name: run test
         run: npm run test
+         env: 
+          TEST_MONGODB_URI: ${{ secrets.MONGODB_URI }}
       # - name: heroku deploy
       #   if: ${{github.event_name == 'push'}}
       #   uses: akhileshns/heroku-deploy@v3.9.9 # This is the action

@@ -5,7 +5,8 @@ const logger = require('./utils/logger')
 
 // eslint-disable-next-line no-unused-vars
 const server = http.createServer(app)
+port = process.env.PORT || 3001
 
-app.listen(config.PORT, () => {
-  logger.info(`Server running on port ${config.PORT}`)
+app.listen(port, () => {
+    logger.info(`Server running on port ${port}`)
 })
