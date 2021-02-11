@@ -26,16 +26,16 @@ jobs:
         run: npm run test 
         env: 
           TEST_MONGODB_URI: ${{ secrets.MONGODB_URI }}
-      # - name: heroku deploy
-      #   if: ${{github.event_name == 'push'}}
-      #   uses: akhileshns/heroku-deploy@v3.9.9 # This is the action
-      #   with:
-      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #     heroku_app_name: "bloglistci" #Must be unique in Heroku
-      #     heroku_email: "laura.a.byman@gmail.com"
-      #     healthcheck: "https://bloglistci.herokuapp.com/health"
-      #     checkstring: "ok"
-      #     rollbackonhealthcheckfailed: true
+      - name: heroku deploy
+        if: ${{github.event_name == 'push'}}
+        uses: akhileshns/heroku-deploy@v3.9.9 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "bloglistci" #Must be unique in Heroku
+          heroku_email: "laura.a.byman@gmail.com"
+          healthcheck: "https://bloglistci.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         uses: anothrNick/github-tag-action@1.33.0
