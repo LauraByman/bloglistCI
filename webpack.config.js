@@ -21,8 +21,7 @@ const webpack = require('webpack')
 const backend_url = 'https://bloglistci.herokuapp.com/'
 // : 'http://localhost:3001/'
 
-const config = (env, argv) => {
-  return {
+module.exports = {
   entry: ['./client/src/index.js'],
   output: {
     path: path.resolve(__dirname, './public'),
@@ -110,6 +109,5 @@ const config = (env, argv) => {
     ]
 	  }
   }
-}
 
-module.exports = config
+
