@@ -34,7 +34,7 @@ jobs:
           heroku_app_name: "bloglistci" #Must be unique in Heroku
           heroku_email: "laura.a.byman@gmail.com"
           checkstring: "ok"
-          healthcheck: "https://bloglistci.herokuapp.com/health"
+          healthcheck: "https://bloglistci.herokuapp.com/api/health"
           rollbackonhealthcheckfailed: true
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
