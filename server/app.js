@@ -13,6 +13,7 @@ const mongoose = require('mongoose')
 var path = require('path')
 
 
+app.use(express.static('./public/'))
 
 
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
@@ -23,6 +24,8 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
     logger.error('error connection to MongoDB:', error.message)
   })
 
+
+
 app.use(cors())
 // const STATIC_ASSETS_PATH = path.resolve(`${__dirname}/../static`);
 // app.use("/static", express.static(STATIC_ASSETS_PATH));
@@ -30,11 +33,8 @@ app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 
-app.use(express.static('./public/'))
 
-app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '../public/index.html'))
-})
+
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testRouter')
@@ -50,5 +50,8 @@ app.use('/api/health', healthRouter)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
+app.get('/', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '../public/index.html'))
+})
 
 module.exports = app
